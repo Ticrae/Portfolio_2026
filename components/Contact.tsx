@@ -127,8 +127,7 @@ export default function Contact() {
             <form
               onSubmit={handleSubmit}
               className="space-y-6"
-              data-netlify="true"
-              name="handle-contact"
+              action={"https://formspree.io/f/xojwlyon"}
               method="POST"
             >
               <div>

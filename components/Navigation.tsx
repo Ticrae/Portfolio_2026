@@ -36,7 +36,7 @@ export function Navigation() {
           <motion.a
             href="#"
             className={
-              "text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r from-purple-600 to-pink-600"
+              "text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r from-black-600 to-gray-600"
             }
             whileHover={{ scale: 1.05 }}
           >
@@ -61,7 +61,7 @@ export function Navigation() {
             ))}
             <motion.a
               href="#contact"
-              className="px-6 py-2 bg-linear-to-r from-purple-600 to-pink-600 text-white rounded-full hover:shadow-lg transition-shadow"
+              className="px-6 py-2 bg-linear-to-r bg-[#0e172b] text-white rounded-full hover:shadow-lg transition-shadow"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -101,7 +101,7 @@ export function Navigation() {
             ))}
             <a
               href="#contact"
-              className="block px-6 py-2 bg-linear-to-r from-purple-600 to-pink-600 text-white rounded-full text-center"
+              className="block px-6 py-2 bg-linear-to-r from-black-600 to-gray-600 text-white rounded-full text-center"
               onClick={() => setIsOpen(false)}
             >
               Hire Me

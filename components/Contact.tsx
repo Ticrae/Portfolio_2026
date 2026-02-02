@@ -3,20 +3,46 @@
 import { motion } from "motion/react";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { useState } from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
+    hCaptchaToken: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const onHCaptchaChange = (token: string) => {
+    setFormData({ ...formData, hCaptchaToken: token });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.hCaptchaToken) {
+      alert("Please complete the captcha.");
+      return;
+    }
     // Handle form submission
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message! I'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        "h-captcha-response": formData.hCaptchaToken,
+      }),
+    });
+    const result = await res.json();
+    if (result.success) {
+      alert("Thank you for your message! I'll get back to you soon.");
+      setFormData({ name: "", email: "", message: "", hCaptchaToken: "" });
+    } else {
+      alert("Failed to send message. Please try again.");
+    }
   };
 
   const handleChange = (
@@ -124,12 +150,7 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-6"
-              action={"https://formspree.io/f/xojwlyon"}
-              method="POST"
-            >
+            <form onSubmit={handleSubmit} className="space-y-6" method="POST">
               <div>
                 <label
                   htmlFor="name"
@@ -189,13 +210,18 @@ export default function Contact() {
 
               <motion.button
                 type="submit"
-                className="w-full px-8 py-4 bg-linear-to-r from-purple-600 to-pink-600 text-white rounded-lg flex items-center justify-center gap-2 hover:shadow-xl transition-shadow"
+                className="w-full px-8 py-4 bg-linear-to-r from-purple-600 to-pink-600 text-white rounded-lg flex items-center justify-center gap-2 hover:shadow-xl transition-shadow cursor-pointer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <span>Send Message</span>
                 <Send size={20} />
               </motion.button>
+              <HCaptcha
+                sitekey={process.env.NEXT_PUBLIC_ACCESS_KEY || "sitekey"}
+                reCaptchaCompat={false}
+                onVerify={onHCaptchaChange}
+              />
             </form>
           </motion.div>
         </div>

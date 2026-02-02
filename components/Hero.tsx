@@ -8,7 +8,7 @@ export function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-br from-purple-50 via-white to-blue-50">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div
+        {/* <motion.div
           className="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70"
           animate={{
             x: [0, 100, 0],
@@ -31,8 +31,8 @@ export function Hero() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-        />
-        <motion.div
+        /> */}
+        {/* <motion.div
           className="absolute -bottom-8 left-1/2 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70"
           animate={{
             x: [0, 50, 0],
@@ -43,7 +43,7 @@ export function Hero() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-        />
+        /> */}
       </div>
 
       {/* Content */}
@@ -54,7 +54,7 @@ export function Hero() {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-purple-600 via-pink-600 to-blue-600"
+            className="text-6xl md:text-8xl font-bold mb-6 bg-clip-text  bg-linear-to-r text-[#1F2937]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -63,7 +63,7 @@ export function Hero() {
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-gray-700 mb-4"
+            className="text-xl md:text-2xl text-[#374151] mb-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -90,7 +90,7 @@ export function Hero() {
           >
             <motion.a
               href="#contact"
-              className="px-8 py-4 bg-linear-to-r from-purple-600 to-pink-600 text-white rounded-full hover:shadow-xl transition-shadow"
+              className="px-8 py-4 bg-linear-to-r bg-[#0e172b] text-white rounded-full hover:shadow-xl transition-shadow"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

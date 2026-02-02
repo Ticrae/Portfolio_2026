@@ -18,7 +18,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-purple-600 to-pink-600">
+            <h2 className="text-5xl font-bold mb-6 bg-clip-text bg-linear-to-r text-[#1F2937]">
               About Me
             </h2>
             <div className="space-y-4 text-lg text-gray-700">

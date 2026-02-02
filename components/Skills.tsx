@@ -66,7 +66,7 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-linear-to-r from-purple-600 to-pink-600">
+          <h2 className="text-5xl font-bold mb-4 bg-clip-text text-[#1F2937] bg-linear-to-r">
             Skills & Expertise
           </h2>
           <p className="text-xl text-gray-600">

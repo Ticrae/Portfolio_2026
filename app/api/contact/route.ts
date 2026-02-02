@@ -4,10 +4,10 @@ export async function POST(request: NextRequest) {
   try {
     const { name, email, message, "h-captcha-response": hCaptchaToken } = await request.json();
 
-    if (!process.env.ACCESS_KEY) {
-      console.error('ACCESS_KEY is not defined');
-      return NextResponse.json({ success: false, message: "Server configuration error." }, { status: 500 });
-    }
+    // if (!process.env.ACCESS_KEY) {
+    //   console.error('ACCESS_KEY is not defined');
+    //   return NextResponse.json({ success: false, message: "Server configuration error." }, { status: 500 });
+    // }
 
     const res = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        access_key: process.env.ACCESS_KEY,
+        access_key: "5684f8f8-88ee-488c-b40c-92a2776a169e",
         name,
         email,
         message,

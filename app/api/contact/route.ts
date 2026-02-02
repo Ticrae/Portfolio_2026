@@ -4,7 +4,7 @@ export async function POST(request: NextRequest) {
   try {
     const { name, email, message, "h-captcha-response": hCaptchaToken } = await request.json();
 
-    if (!process.env.NEXT_PUBLIC_ACCESS_KEY) {
+    if (!process.env.ACCESS_KEY) {
       console.error('ACCESS_KEY is not defined');
       return NextResponse.json({ success: false, message: "Server configuration error." }, { status: 500 });
     }
@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        access_key: process.env.NEXT_PUBLIC_ACCESS_KEY,
+        access_key: process.env.ACCESS_KEY,
         name,
         email,
         message,

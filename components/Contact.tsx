@@ -218,7 +218,7 @@ export default function Contact() {
                 <Send size={20} />
               </motion.button>
               <HCaptcha
-                sitekey={process.env.NEXT_PUBLIC_ACCESS_KEY}
+                sitekey="5684f8f8-88ee-488c-b40c-92a2776a169e"
                 reCaptchaCompat={false}
                 onVerify={onHCaptchaChange}
               />

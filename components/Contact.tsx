@@ -3,43 +3,34 @@
 import { motion } from "motion/react";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { useState } from "react";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-    hCaptchaToken: "",
   });
-
-  const onHCaptchaChange = (token: string) => {
-    setFormData({ ...formData, hCaptchaToken: token });
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.hCaptchaToken) {
-      alert("Please complete the captcha.");
-      return;
-    }
     // Handle form submission
-    const res = await fetch("/api/contact", {
+    const res = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify({
+        access_key: "5684f8f8-88ee-488c-b40c-92a2776a169e",
         name: formData.name,
         email: formData.email,
         message: formData.message,
-        "h-captcha-response": formData.hCaptchaToken,
       }),
     });
     const result = await res.json();
     if (result.success) {
       alert("Thank you for your message! I'll get back to you soon.");
-      setFormData({ name: "", email: "", message: "", hCaptchaToken: "" });
+      setFormData({ name: "", email: "", message: "" });
     } else {
       alert("Failed to send message. Please try again.");
     }
@@ -217,11 +208,6 @@ export default function Contact() {
                 <span>Send Message</span>
                 <Send size={20} />
               </motion.button>
-              <HCaptcha
-                sitekey="5684f8f8-88ee-488c-b40c-92a2776a169e"
-                reCaptchaCompat={false}
-                onVerify={onHCaptchaChange}
-              />
             </form>
           </motion.div>
         </div>

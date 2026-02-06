@@ -42,8 +42,8 @@ export default function About() {
 
               <p>
                 Overall, I’m someone who cares deeply about building reliable,
-                user-centric products—apps that not only look good, but work
-                smoothly across devices and stand the test of time.
+                user-centric products that not only look good, but work smoothly
+                across devices and stand the test of time.
               </p>
             </div>
 

@@ -35,9 +35,7 @@ export function Navigation() {
         <div className="flex items-center justify-between">
           <motion.a
             href="#"
-            className={
-              "text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r from-black-600 to-gray-600"
-            }
+            className={"text-2xl font-bold text-black bg-clip-text"}
             whileHover={{ scale: 1.05 }}
           >
             Portfolio
